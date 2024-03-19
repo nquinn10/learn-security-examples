@@ -1,0 +1,17 @@
+Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+Input taking from the form allows user to enter code into form
+Server reads in post("/register") end point and sends to session.user
+That is then read in line 29
+
+
+
+In secure.js
+
+Makes sure user input is sanitized - converting anything interpreted as script to string
+function escapeHTML(input) {
+}
+
+
+
+Which CIA properties do you think Tampering violates?
