@@ -6,6 +6,7 @@ const app = express()
 const secret = process.argv[2];
 app.use(express.urlencoded({ extended: false }))
 
+// configure middleware - httpOnly must be true - if its false, security issue
 app.use(
   session({
     secret: `${secret}`,
