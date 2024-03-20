@@ -1,26 +1,17 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
-End points defined in server, specifically post ./sensitive input can be accessed by anyone. There
-are no checks to see if call to post("sensitive") is legitamate
 
-Any client can access post("/sensitive") if there is a session id
-CRFS Attack  in mal-csrf.html cannot happen without session id
-via this method - attacker is able to send valid session to server
-Primary mechanism to carry out spoofing attack
-
-Key concept - cookies automatically get sent with http request
-All they had to do was trigger http request and session id was sent?
-
-session management is not handled approapitely which could result in spoofing attack
+Lack of proper authentication and authorization checks in the "./sensitive" end point.
+Any client with a valid session ID can access the /sensitive endpoint, regardless of whether the
+request is legitimate or not. This lack of access control makes the application vulnerable to CSRF
+(Cross-Site Request Forgery) attacks.
 
 Secure Version
-1. secure.js -app.use(session(secret)  -  made sure secret signing session id is not hard coded
-Take hash and compare with hash id - if they dont match, drop the request
 
-we know session id will be set in cookie
-need to make sure session cannot be read programmatically by malicious component
-2.  - set httpOnly to true
-3.  - sameSite true - session id from clint will only be send if ports match
-
-
+The code sets the httpOnly flag to true in the session cookie configuration.
+This prevents client-side from accessing the session cookie, making it more difficult for attackers
+to steal session identifiers via XSS. sameSite attribute is also set to true, which restricts the
+cookie to be sent in same-site requests only
 
 Which CIA properties do you think Spoofing violates?
+
+Integrity and Authentication
