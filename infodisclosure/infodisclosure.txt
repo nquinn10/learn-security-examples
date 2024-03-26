@@ -1,3 +1,21 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
-Which CIA property does tampering violate?
+
+Input is not sanitized therefore can execute any mongo query through input
+Line 26
+Intent is to only return object for particular user, but attacker can input mongo query to query database
+Vulnerability - server doesnt account for fact that user can enter anything other than string username
+Should make sure input is nothing but string input - whitelisting inputs
+
+In Secure.js
+in Line 31, removing all non-alphanumeric chars using regex
+If anything is not a word or space, replace with empty space
+Ensuring only usernames with alphanumeric characters are allowed
+
+Secure with respect to info disclosure
+
+Which CIA property does info disclosure violate?
+
+
 What additional security mechanisms can you incorporate?
+Hash the passwords stored in mongo db - currently they are stored as plain text
+HTTPS to encrypt data in transit
