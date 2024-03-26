@@ -1,2 +1,14 @@
 - Briefly explain the vulnerability and why the secure version is better at preventing repudiation than the insecure version.
+
+There is no authentication or weak authentication
+
+In secure.js
+There is logging on the user behavior
+Has some form of logging for public facing endpoints which makes sure we are collecting info for incoming requests
+Creating record and can analyze log files for suspicious behavior
+
+
 - What additional security mechanisms can you incorporate to prevent such attacks?
+Have automated script to analyze logs for any suspicious behavior
+
+
