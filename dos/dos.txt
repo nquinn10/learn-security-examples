@@ -1,2 +1,15 @@
 - Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+There is no try/catch around find one in line 26
+We are doing a find one on the id. If you try to carry out NoSQL injection on id in mongodb, it will fail
+If you send it a regular expression, it is going to crash server
+Attacker could crash service - DOS attack
+If send in id[$ne] - will
+
+In secure.js
+We use try/catch - if something is wrong, we send a response back to specify error
+
+Not sanitizing id because of native safeguards that mongodb has for id. Not done in secure.js
+but should still sanitize inputs
+
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
