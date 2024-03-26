@@ -12,4 +12,7 @@ Not sanitizing id because of native safeguards that mongodb has for id. Not done
 but should still sanitize inputs
 
 - What additional security mechanisms can you incorporate to prevent such attacks?
+In context of DOS attacks, could implement rate limits. Could add middleware just before route.
+Middleware could be some function to only allow certain number of requests per specified time.
+
 
