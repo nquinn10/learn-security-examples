@@ -23,8 +23,9 @@ app.get('/userinfo', async (req, res) => {
   const { username } = req.query;
 
   // Vulnerable code: Directly using user-provided values in the query
-  const user = await User.findOne({ username: username }).exec();
-
+  const user = await User.findOne({ username: username }).exec(); // take in username param - person could hikack param and just put in any query
+// take condition where username is $ne
+  //$ne is what is given as username and with username: $ne translated into mongo db query
   if (user) {
     res.send(`User: ${user}`);
   } else {
