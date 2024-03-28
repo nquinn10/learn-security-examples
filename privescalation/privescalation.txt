@@ -1,16 +1,17 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
 
-Can pass in id of admin and downgrade role
+No verification of the userId provided. After "authenticating" the user, they can
+grant themselves higher privledged or can pass in id of admin and downgrade role
+
 There is no way to authenticate user who sent id is an admin or not
-Trying to update the role, but if the user
 
 In form, can try out different ids and then just update the role as specified
 Can do brute force until hitting valid id
 Any user who is not admin is capable of downgrading role of admin user
 
-
 In secure.js
 Check whether user id is part of session or not
+If user id is part of session, then can see if you can find and check if they are an admin
 Still need endpoint to store user id in session
 Also ensure session is assigned with secret key - if anyone changes session, hash will not match
 Need to make sure cookie cannot be accessed programatically
