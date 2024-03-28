@@ -2,6 +2,8 @@
 
 There is no authentication or weak authentication
 
+There is no logging or record of who sent each message
+
 In secure.js
 There is logging on the user behavior
 Has some form of logging for public facing endpoints which makes sure we are collecting info for incoming requests
